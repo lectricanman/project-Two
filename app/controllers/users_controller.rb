@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   #authorizes specific method views
-  before_filter :authorize, :only =>
+  before_filter :authorize, :only => [:edit, :update, :destroy]
 
   def index
     @users = User.all
@@ -24,15 +24,22 @@ class UsersController < ApplicationController
   end
 
   def edit
-
+    @user = User.find_by(id: params[:id])
   end
 
   def update
-
-  end
+    @user = User.find(current_user.id)
+    if @user.update(user_params)
+      redirect_to('/')
+    else
+      redirect_to("/users/#{@user.id}")
+    end
+  end #update
 
   def destroy
-
+    @user = User.find(params[:id])
+    redirect_to('/logout')
+    @user.destroy
   end
 
   private
