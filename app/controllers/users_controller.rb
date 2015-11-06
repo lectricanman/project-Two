@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+  #authorizes specific method views
+  before_filter :authorize, :only =>
+
   def index
     @users = User.all
   end
@@ -15,6 +18,7 @@ class UsersController < ApplicationController
       redirect_to('/users/new')
     end
   end
+
   def show
     @user = User.find_by(id: params[:id])
   end
