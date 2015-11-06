@@ -1,0 +1,8 @@
+<h1>Welcome to the forums<h1>
+<ul>
+  <% @boards.each do |board| %>
+    <li>
+      <%= board.topic %>
+    </li>
+  <% end %>
+</ul>
