@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby '2.2.3'
 
 gem 'validates_email_format_of'
 gem 'pry-rails'

@@ -5,11 +5,13 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(Post_params)
-    if user.save
-      redirect_to('/users')
+    @post = Post.new(post_params)
+    @post.user_id = current_user.id
+    if @post.save
+      redirect_to('/boards')
     else
-      redirect_to('/users/new')
+      binding.pry
+      redirect_to('/posts/new')
     end
   end
 
@@ -31,11 +33,12 @@ class PostsController < ApplicationController
 
   private
 
-  def Post_params
+  def post_params
     params.require(:post).permit(
       :title,
-      :image_url,
-      :password_confirmation
+      :body,
+      :opt_image_url,
+      :board_name
     )
   end
 
