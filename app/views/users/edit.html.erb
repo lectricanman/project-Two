@@ -1,6 +1,9 @@
 <%= form_for @user do |f| %>
-  Alias: <%= f.text_field :name%>
+  User-name: <%= f.text_field :name%>
+  Picture-url: <%= f.text_field :image_url%>
   <%= f.submit "Submit Change"%>
 <% end %>
 
-<%= link_to "home", "/"%>
+<%= link_to "home", '/'%>
+<%= button_to "Delete Account", "/users/#{@user.id}", method: "delete",
+ data:{ confirm: "Warning: this will permanently delete your account"} %>

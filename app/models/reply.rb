@@ -1,4 +1,4 @@
 class Reply < ActiveRecord::Base
-  belongs_to :thread
+  belongs_to :post
   blongs_to :user
 end

@@ -1,3 +1,3 @@
 class Board < ActiveRecord::Base
-    has_many :threads
+    has_many :posts
 end

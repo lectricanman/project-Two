@@ -7,8 +7,17 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<h1>befor yield</h1>
+<!-- displays login|signup /logout -->
+  <% if current_user %>
+       Signed in as <%= current_user.name %> | <%= link_to "Logout", '/logout' %>
+        | <%= link_to "Users", '/users'%>
+        | <%= link_to "Edit Profile", "/users/#{current_user.id}/edit"%>
+     <% else %>
+       <%= link_to 'Login', '/login' %> | <%= link_to 'Signup', '/signup' %>
+     <% end %>
+ ​
+
 <%= yield %>
-<h1>after yield</h1>
+
 </body>
 </html>
