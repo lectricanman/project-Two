@@ -1,0 +1,5 @@
+<%= form_for :reply, url: post_replies_path do |f| %>
+  Reply: <%= f.text_field :text %>
+  Image-url(optional): <%= f.text_field :opt_image_url%>
+  <%= f.submit "Submit" %>
+<% end %>

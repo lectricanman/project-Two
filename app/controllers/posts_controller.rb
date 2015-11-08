@@ -7,10 +7,10 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
+    @post.board_id = Board.find_by(id: params[:board_id]).id
     if @post.save
       redirect_to('/boards')
     else
-      binding.pry
       redirect_to('/posts/new')
     end
   end
@@ -19,16 +19,9 @@ class PostsController < ApplicationController
     @post = Post.find_by(id: params[:id])
   end
 
-  def edit
-
-  end
-
-  def update
-
-  end
-
   def destroy
-
+    @post = Post.find_by(id: params[:id])
+    @post.destroy
   end
 
   private

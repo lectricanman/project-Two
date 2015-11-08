@@ -1,7 +1,6 @@
-<%=form_for :post, url: "/posts" do |f|%>
+<%= form_for :post, url: board_posts_path do |f| %>
   Title: <%= f.text_field :title %>
   Body: <%= f.text_field :body %>
   Image-url(optional): <%= f.text_field :opt_image_url%>
-  Board: <%= %>
   <%= f.submit "Submit" %>
 <% end %>
